@@ -1,0 +1,1643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>National Academy – Career Orientation Seminar 2026</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Orbitron:wght@400;600;800;900&family=Exo+2:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="shortcut icon" href="avatar.png" type="logo.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    :root {
+      --blue-deep: #0a0e2e;
+      --blue-mid: #0d1b5e;
+      --blue-bright: #1a3fdb;
+      --blue-electric: #2979ff;
+      --gold: #f5c518;
+      --gold-light: #ffe066;
+      --white: #ffffff;
+      --white-80: rgba(255,255,255,0.8);
+      --white-20: rgba(255,255,255,0.08);
+      --cyan: #00e5ff;
+      --glow: 0 0 20px rgba(41,121,255,0.6);
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Exo 2', sans-serif;
+      background: var(--blue-deep);
+      color: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* ─── Particle BG ─── */
+    #particles-bg {
+      position: fixed;
+      top:0; left:0; width:100%; height:100%;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.15;
+      animation: floatParticle linear infinite;
+    }
+    @keyframes floatParticle {
+      0%   { transform: translateY(100vh) scale(0); opacity: 0; }
+      10%  { opacity: 0.2; }
+      90%  { opacity: 0.15; }
+      100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+    }
+
+    .hex-grid {
+      position: fixed;
+      top:0; left:0; width:100%; height:100%;
+      z-index:0;
+      pointer-events:none;
+      opacity: 0.04;
+      background-image:
+        repeating-linear-gradient(60deg, #2979ff 0, #2979ff 1px, transparent 0, transparent 50%),
+        repeating-linear-gradient(120deg, #2979ff 0, #2979ff 1px, transparent 0, transparent 50%),
+        repeating-linear-gradient(0deg, #2979ff 0, #2979ff 1px, transparent 0, transparent 50%);
+      background-size: 80px 140px;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.8rem 2.5rem;
+      background: rgba(10,14,46,0.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(41,121,255,0.3);
+      box-shadow: 0 2px 30px rgba(0,0,0,0.5);
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    /* ── FIXED: Logo container ── */
+    .nav-logo-wrap {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 2px solid rgba(41,121,255,0.6);
+      box-shadow: 0 0 16px rgba(41,121,255,0.6);
+      flex-shrink: 0;
+      overflow: hidden;
+      background: var(--blue-bright);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .nav-logo-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+      display: block;
+    }
+    /* Fallback text shown via JS if image fails */
+    .nav-logo-fallback {
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 800;
+      font-size: 14px;
+      color: white;
+      letter-spacing: -1px;
+      display: none;
+    }
+
+    .nav-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--gold);
+      letter-spacing: 1px;
+      line-height: 1.1;
+    }
+    .nav-sub { font-size: 0.65rem; color: var(--cyan); letter-spacing: 2px; text-transform: uppercase; }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 0.2rem;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--white-80);
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      transition: all 0.3s;
+      letter-spacing: 0.5px;
+    }
+    .nav-links a:hover {
+      color: var(--gold);
+      background: rgba(245,197,24,0.1);
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 2rem;
+      padding: 5rem 4rem 3rem;
+      overflow: hidden;
+    }
+    .hero::before {
+      content:'';
+      position:absolute;
+      top:-200px; right:-200px;
+      width:600px; height:600px;
+      background: radial-gradient(circle, rgba(41,121,255,0.25) 0%, transparent 70%);
+      border-radius:50%;
+      pointer-events:none;
+    }
+    .hero::after {
+      content:'';
+      position:absolute;
+      bottom:-150px; left:-150px;
+      width:500px; height:500px;
+      background: radial-gradient(circle, rgba(245,197,24,0.1) 0%, transparent 70%);
+      border-radius:50%;
+      pointer-events:none;
+    }
+
+    .hero-left { z-index:2; }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(245,197,24,0.12);
+      border: 1px solid rgba(245,197,24,0.4);
+      color: var(--gold);
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      padding: 6px 16px;
+      border-radius: 30px;
+      margin-bottom: 1.5rem;
+      animation: fadeInDown 0.8s ease both;
+    }
+
+    .hero-welcome {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1rem;
+      color: var(--cyan);
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+      animation: fadeInDown 0.9s ease 0.1s both;
+    }
+
+    .hero-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 0.5rem;
+      animation: fadeInDown 1s ease 0.2s both;
+    }
+    .hero-title span { color: var(--gold); }
+
+    .hero-subtitle {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--white-80);
+      margin-bottom: 0.3rem;
+      animation: fadeInDown 1s ease 0.3s both;
+    }
+
+    .hero-event {
+      display: flex;
+      gap: 2rem;
+      margin: 1.5rem 0;
+      animation: fadeInDown 1s ease 0.4s both;
+    }
+    .hero-event-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(41,121,255,0.12);
+      border: 1px solid rgba(41,121,255,0.3);
+      padding: 10px 18px;
+      border-radius: 10px;
+    }
+    .hero-event-item i { color: var(--cyan); font-size: 1.1rem; }
+    .hero-event-item span { font-family: 'Rajdhani', sans-serif; font-weight: 600; font-size: 0.95rem; }
+
+    /* ── FIXED: Speaker card ── */
+    .hero-speaker {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin: 1.5rem 0;
+      padding: 16px 20px;
+      background: rgba(245,197,24,0.08);
+      border: 1px solid rgba(245,197,24,0.25);
+      border-radius: 14px;
+      animation: fadeInDown 1s ease 0.5s both;
+    }
+
+    .speaker-photo-wrap {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      border: 3px solid var(--gold);
+      overflow: hidden;
+      flex-shrink: 0;
+      box-shadow: 0 0 20px rgba(245,197,24,0.4);
+      background: linear-gradient(135deg, var(--blue-bright), var(--blue-mid));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .speaker-photo-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      border-radius: 50%;
+      display: block;
+    }
+    .speaker-initials {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 900;
+      color: var(--gold);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: none;
+    }
+
+    .speaker-info h4 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.9rem;
+      color: var(--gold);
+    }
+    .speaker-info p { font-size: 0.85rem; color: var(--white-80); }
+    .speaker-info .speaker-tag {
+      font-size: 0.7rem;
+      background: var(--gold);
+      color: #000;
+      padding: 2px 8px;
+      border-radius: 20px;
+      font-weight: 700;
+      display: inline-block;
+      margin-top: 4px;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 1rem;
+      animation: fadeInDown 1s ease 0.6s both;
+    }
+
+    .btn-primary-3d {
+      padding: 14px 32px;
+      background: linear-gradient(135deg, var(--blue-bright), var(--blue-electric));
+      color: var(--white);
+      border: none;
+      border-radius: 10px;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      cursor: pointer;
+      box-shadow: 0 8px 24px rgba(41,121,255,0.4), inset 0 1px 0 rgba(255,255,255,0.1);
+      transition: all 0.3s;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-primary-3d:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 32px rgba(41,121,255,0.6);
+      color: var(--white);
+    }
+
+    .btn-gold-3d {
+      padding: 14px 32px;
+      background: linear-gradient(135deg, var(--gold), #e6b800);
+      color: #000;
+      border: none;
+      border-radius: 10px;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      cursor: pointer;
+      box-shadow: 0 8px 24px rgba(245,197,24,0.35);
+      transition: all 0.3s;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-gold-3d:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 32px rgba(245,197,24,0.5);
+      color: #000;
+    }
+
+    /* ─── 3D Atom ─── */
+    .hero-right {
+      z-index:2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .scene-3d {
+      width: 320px;
+      height: 320px;
+      perspective: 800px;
+      position: relative;
+    }
+
+    .atom-ring {
+      position: absolute;
+      top:50%; left:50%;
+      border: 2px solid rgba(41,121,255,0.6);
+      border-radius: 50%;
+      transform-origin: center;
+      transform-style: preserve-3d;
+    }
+    .ring1 {
+      width: 280px; height: 280px;
+      margin: -140px 0 0 -140px;
+      border-color: rgba(41,121,255,0.5);
+      animation: rotRing1 4s linear infinite;
+    }
+    .ring2 {
+      width: 220px; height: 220px;
+      margin: -110px 0 0 -110px;
+      border-color: rgba(245,197,24,0.5);
+      animation: rotRing2 6s linear infinite reverse;
+    }
+    .ring3 {
+      width: 160px; height: 160px;
+      margin: -80px 0 0 -80px;
+      border-color: rgba(0,229,255,0.5);
+      animation: rotRing3 8s linear infinite;
+    }
+    @keyframes rotRing1 {
+      from { transform: rotateX(70deg) rotateZ(0deg); }
+      to   { transform: rotateX(70deg) rotateZ(360deg); }
+    }
+    @keyframes rotRing2 {
+      from { transform: rotateX(20deg) rotateY(0deg); }
+      to   { transform: rotateX(20deg) rotateY(360deg); }
+    }
+    @keyframes rotRing3 {
+      from { transform: rotateY(60deg) rotateZ(0deg); }
+      to   { transform: rotateY(60deg) rotateZ(360deg); }
+    }
+
+    .atom-core {
+      position: absolute;
+      top:50%; left:50%;
+      width: 80px; height: 80px;
+      margin: -40px 0 0 -40px;
+      background: radial-gradient(circle, var(--gold) 0%, #e6a200 60%, transparent 100%);
+      border-radius: 50%;
+      box-shadow: 0 0 40px rgba(245,197,24,0.8), 0 0 80px rgba(245,197,24,0.3);
+      animation: pulseCore 2s ease-in-out infinite;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.6rem;
+      font-weight: 900;
+      color: #000;
+      text-align: center;
+      line-height: 1.1;
+    }
+    @keyframes pulseCore {
+      0%,100% { transform: scale(1); box-shadow: 0 0 40px rgba(245,197,24,0.8); }
+      50%      { transform: scale(1.1); box-shadow: 0 0 60px rgba(245,197,24,1); }
+    }
+
+    .floating-card {
+      position: absolute;
+      background: rgba(13,27,94,0.9);
+      border: 1px solid rgba(41,121,255,0.4);
+      border-radius: 12px;
+      padding: 10px 16px;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    }
+    .floating-card.fc1 { top:5%; right:-10%; animation: floatCard1 3s ease-in-out infinite; }
+    .floating-card.fc2 { bottom:10%; left:-15%; animation: floatCard2 4s ease-in-out infinite; }
+    .floating-card.fc3 { top:50%; right:-20%; animation: floatCard3 3.5s ease-in-out infinite; }
+    @keyframes floatCard1 { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-12px)} }
+    @keyframes floatCard2 { 0%,100%{transform:translateY(0)} 50%{transform:translateY(10px)} }
+    @keyframes floatCard3 { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+    .fc-icon { color: var(--gold); margin-right: 6px; }
+
+    /* ─── SECTIONS ─── */
+    section {
+      position: relative;
+      z-index: 1;
+      padding: 5rem 4rem;
+    }
+
+    .section-label {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 4px;
+      color: var(--cyan);
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+    .section-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+    }
+    .section-title span { color: var(--gold); }
+    .section-divider {
+      width: 80px; height: 3px;
+      background: linear-gradient(90deg, var(--gold), var(--blue-electric));
+      border-radius: 3px;
+      margin: 0.8rem auto 2.5rem;
+    }
+    .section-divider.left { margin-left: 0; }
+
+    /* ─── AGENDA ─── */
+    #agenda { background: rgba(255,255,255,0.015); }
+
+    .agenda-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .agenda-card {
+      background: linear-gradient(135deg, rgba(13,27,94,0.8), rgba(10,14,46,0.9));
+      border: 1px solid rgba(41,121,255,0.25);
+      border-radius: 16px;
+      padding: 1.8rem;
+      transition: all 0.4s cubic-bezier(0.175,0.885,0.32,1.275);
+      position: relative;
+      overflow: hidden;
+    }
+    .agenda-card::before {
+      content:'';
+      position:absolute;
+      top:0; left:0; right:0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--blue-electric), var(--gold));
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .agenda-card:hover { transform: translateY(-8px) scale(1.02); border-color: rgba(41,121,255,0.6); box-shadow: 0 20px 40px rgba(0,0,0,0.4), var(--glow); }
+    .agenda-card:hover::before { opacity: 1; }
+    .agenda-num { font-family: 'Orbitron', sans-serif; font-size: 2.5rem; font-weight: 900; color: rgba(41,121,255,0.15); line-height: 1; margin-bottom: 0.5rem; }
+    .agenda-icon { width: 50px; height: 50px; background: linear-gradient(135deg, var(--blue-bright), var(--blue-electric)); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; box-shadow: 0 4px 15px rgba(41,121,255,0.4); }
+    .agenda-icon i { color: white; font-size: 1.3rem; }
+    .agenda-card h3 { font-family: 'Rajdhani', sans-serif; font-size: 1.15rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .agenda-card p { font-size: 0.9rem; color: var(--white-80); line-height: 1.5; }
+
+    /* ─── EXAMS ─── */
+    #exams { background: linear-gradient(180deg, rgba(41,121,255,0.04) 0%, transparent 100%); }
+    .exam-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 2rem; }
+    .exam-card {
+      background: linear-gradient(145deg, rgba(13,27,94,0.9), rgba(10,14,46,0.95));
+      border: 1px solid rgba(41,121,255,0.2);
+      border-radius: 20px;
+      padding: 2.5rem 2rem;
+      text-align: center;
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .exam-card::after { content:''; position:absolute; inset:0; background: radial-gradient(circle at 50% 0%, rgba(41,121,255,0.08) 0%, transparent 60%); pointer-events:none; }
+    .exam-card:hover { transform: translateY(-12px); border-color: var(--gold); box-shadow: 0 24px 50px rgba(0,0,0,0.5), 0 0 30px rgba(245,197,24,0.2); }
+    .exam-hex { width: 80px; height: 80px; background: linear-gradient(135deg, var(--gold), #e6a200); clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; box-shadow: 0 0 30px rgba(245,197,24,0.4); }
+    .exam-hex i { color: #000; font-size: 1.8rem; }
+    .exam-card h3 { font-family: 'Orbitron', sans-serif; font-size: 1.3rem; font-weight: 800; color: var(--gold); margin-bottom: 0.5rem; }
+    .exam-card h4 { font-family: 'Rajdhani', sans-serif; font-size: 0.9rem; font-weight: 600; color: var(--cyan); letter-spacing: 1px; margin-bottom: 1rem; }
+    .exam-card p { font-size: 0.9rem; color: var(--white-80); line-height: 1.6; }
+
+    /* ─── CAREERS ─── */
+    #careers { background: rgba(255,255,255,0.01); }
+    .career-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+    .career-card { background: rgba(13,27,94,0.6); border: 1px solid rgba(41,121,255,0.2); border-radius: 18px; padding: 2rem 1.5rem; text-align: center; transition: all 0.4s; cursor: default; }
+    .career-card:hover { background: rgba(41,121,255,0.15); border-color: var(--blue-electric); transform: translateY(-6px) rotateX(5deg); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
+    .career-icon-wrap { width: 70px; height: 70px; background: linear-gradient(135deg, rgba(41,121,255,0.3), rgba(41,121,255,0.1)); border: 2px solid rgba(41,121,255,0.4); border-radius: 50%; display: flex; align-items:center; justify-content:center; margin: 0 auto 1.2rem; font-size: 1.8rem; }
+    .career-card h3 { font-family: 'Orbitron', sans-serif; font-size: 1rem; font-weight: 700; color: var(--gold); margin-bottom: 0.5rem; }
+    .career-card p { font-size: 0.85rem; color: var(--white-80); line-height: 1.5; }
+
+    /* ─── PATHS ─── */
+    #paths { padding: 5rem 4rem; }
+    .path-container { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; margin-top: 2rem; }
+    .path-box { background: linear-gradient(145deg, rgba(13,27,94,0.9), rgba(10,14,46,0.95)); border-radius: 20px; padding: 2.5rem; border: 1px solid rgba(41,121,255,0.25); position: relative; overflow: hidden; }
+    .path-box.jee { border-top: 3px solid var(--blue-electric); }
+    .path-box.neet { border-top: 3px solid #00c853; }
+    .path-box-title { font-family: 'Orbitron', sans-serif; font-size: 1.4rem; font-weight: 800; margin-bottom: 1rem; }
+    .path-box.jee .path-box-title { color: var(--blue-electric); }
+    .path-box.neet .path-box-title { color: #00c853; }
+    .path-items { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .path-item { background: rgba(255,255,255,0.05); border-radius: 10px; padding: 0.8rem 1rem; font-family: 'Rajdhani', sans-serif; font-weight: 600; font-size: 0.9rem; display: flex; align-items: center; gap: 8px; }
+    .path-item i { color: var(--gold); font-size: 0.8rem; }
+
+    /* ─── COLLEGES ─── */
+    #colleges { background: rgba(245,197,24,0.02); }
+    .colleges-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.2rem; margin-top: 2rem; }
+    .college-card { background: rgba(13,27,94,0.7); border: 1px solid rgba(41,121,255,0.2); border-radius: 14px; padding: 1.5rem 1rem; text-align: center; transition: all 0.3s; font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 0.95rem; }
+    .college-card:hover { background: rgba(41,121,255,0.2); border-color: var(--gold); transform: translateY(-6px); color: var(--gold); }
+    .college-card i { color: var(--gold); font-size: 1.5rem; display:block; margin-bottom: 0.5rem; }
+
+    /* ─── WHY ─── */
+    #why { background: linear-gradient(135deg, rgba(41,121,255,0.06) 0%, rgba(245,197,24,0.03) 100%); }
+    .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+    .why-card { background: rgba(10,14,46,0.8); border: 1px solid rgba(41,121,255,0.2); border-radius: 18px; padding: 2rem 1.5rem; text-align: center; transition: all 0.4s; }
+    .why-card:hover { transform: translateY(-8px) scale(1.03); border-color: var(--gold); box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 25px rgba(245,197,24,0.15); }
+    .why-icon { width: 64px; height: 64px; border-radius: 50%; background: linear-gradient(135deg, var(--blue-bright), var(--blue-electric)); display: flex; align-items:center; justify-content:center; margin: 0 auto 1.2rem; font-size: 1.5rem; box-shadow: 0 8px 24px rgba(41,121,255,0.35); transition: transform 0.3s; }
+    .why-card:hover .why-icon { transform: scale(1.15) rotate(5deg); }
+    .why-card h3 { font-family: 'Orbitron', sans-serif; font-size: 0.9rem; font-weight: 700; color: var(--gold); margin-bottom: 0.5rem; }
+    .why-card p { font-size: 0.85rem; color: var(--white-80); }
+
+    /* ─── RESULTS ─── */
+    #results { overflow: hidden; }
+    .results-header { text-align: center; margin-bottom: 3rem; }
+    .results-tabs { display: flex; justify-content: center; gap: 1rem; margin-bottom: 2rem; }
+    .tab-btn { padding: 10px 28px; border: 2px solid rgba(41,121,255,0.4); background: transparent; color: var(--white-80); border-radius: 30px; font-family: 'Rajdhani', sans-serif; font-size: 1rem; font-weight: 700; cursor: pointer; transition: all 0.3s; }
+    .tab-btn.active, .tab-btn:hover { background: linear-gradient(135deg, var(--blue-bright), var(--blue-electric)); border-color: var(--blue-electric); color: white; box-shadow: 0 4px 20px rgba(41,121,255,0.4); }
+    .results-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 1.2rem; }
+
+    /* ── FIXED: Topper card ── */
+    .topper-card {
+      background: linear-gradient(145deg, rgba(13,27,94,0.9), rgba(10,14,46,0.95));
+      border: 1px solid rgba(41,121,255,0.2);
+      border-radius: 16px;
+      padding: 1.5rem 1rem;
+      text-align: center;
+      transition: all 0.4s;
+      position: relative;
+      overflow: hidden;
+    }
+    .topper-card::before {
+      content:'';
+      position:absolute;
+      top:0; left:0; right:0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold), var(--blue-electric));
+    }
+    .topper-card:hover { transform: translateY(-8px) scale(1.04); border-color: var(--gold); box-shadow: 0 16px 40px rgba(0,0,0,0.5), 0 0 20px rgba(245,197,24,0.2); }
+    .topper-rank { position: absolute; top: 12px; right: 12px; background: var(--gold); color: #000; font-family: 'Orbitron', sans-serif; font-size: 0.6rem; font-weight: 900; padding: 3px 8px; border-radius: 20px; }
+
+    /* ── FIXED: Topper avatar ── */
+    .topper-avatar {
+      width: 60px;
+      height: 60px;
+      border: 2px solid rgba(245,197,24,0.4);
+      border-radius: 50%;
+      margin: 0 auto 0.8rem;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, rgba(41,121,255,0.3), rgba(245,197,24,0.2));
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--gold);
+      position: relative;
+    }
+    .topper-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      border-radius: 50%;
+      display: block;
+      position: absolute;
+      top: 0; left: 0;
+    }
+    .topper-avatar .avatar-initials {
+      position: relative;
+      z-index: 1;
+    }
+
+    .topper-name { font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 0.95rem; color: var(--white); margin-bottom: 0.3rem; }
+    .topper-score { font-family: 'Orbitron', sans-serif; font-size: 1.4rem; font-weight: 900; color: var(--gold); line-height: 1; }
+    .topper-score span { font-size: 0.7rem; color: var(--white-80); }
+    .topper-exam { font-size: 0.75rem; color: var(--cyan); font-family: 'Rajdhani', sans-serif; font-weight: 600; letter-spacing: 1px; margin-top: 4px; }
+
+    /* ─── GALLERY ─── */
+    #gallery { background: rgba(255,255,255,0.01); }
+    .gallery-filter { display: flex; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap; }
+    .filter-btn { padding: 8px 20px; border: 1px solid rgba(41,121,255,0.4); background: transparent; color: var(--white-80); border-radius: 20px; font-family: 'Rajdhani', sans-serif; font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: all 0.3s; }
+    .filter-btn.active, .filter-btn:hover { background: rgba(41,121,255,0.2); border-color: var(--blue-electric); color: white; }
+    .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.2rem; }
+    .gallery-item { border-radius: 14px; overflow: hidden; position: relative; background: rgba(13,27,94,0.5); aspect-ratio: 4/3; border: 1px solid rgba(41,121,255,0.2); transition: all 0.4s; }
+    .gallery-item:hover { transform: scale(1.03); border-color: var(--gold); box-shadow: 0 16px 40px rgba(0,0,0,0.5); }
+    .gallery-item img { width:100%; height:100%; object-fit:cover; transition:transform 0.5s; }
+    .gallery-item:hover img { transform: scale(1.08); }
+    .gallery-overlay { position:absolute; inset:0; background:linear-gradient(to top, rgba(10,14,46,0.8) 0%, transparent 60%); display:flex; align-items:flex-end; padding:1rem; font-family:'Rajdhani',sans-serif; font-weight:700; font-size:0.9rem; opacity:0; transition:opacity 0.3s; }
+    .gallery-item:hover .gallery-overlay { opacity: 1; }
+    .gallery-placeholder { background: linear-gradient(135deg, rgba(13,27,94,0.9), rgba(41,121,255,0.2)); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:0.5rem; color:var(--white-80); font-family:'Rajdhani',sans-serif; }
+    .gallery-placeholder i { font-size:2rem; color:rgba(41,121,255,0.4); }
+    .gallery-placeholder span { font-size:0.85rem; }
+
+    /* ─── CONTACT ─── */
+    #contact { background: linear-gradient(135deg, rgba(41,121,255,0.06), rgba(245,197,24,0.03)); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 4rem; align-items: start; }
+    .contact-info h3 { font-family: 'Orbitron', sans-serif; font-size: 1.3rem; color: var(--gold); margin-bottom: 2rem; }
+    .contact-item { display:flex; align-items:center; gap:16px; margin-bottom:1.5rem; padding:1rem 1.2rem; background:rgba(13,27,94,0.6); border:1px solid rgba(41,121,255,0.2); border-radius:12px; transition:all 0.3s; }
+    .contact-item:hover { border-color: var(--gold); background: rgba(41,121,255,0.1); }
+    .contact-icon { width:44px; height:44px; background:linear-gradient(135deg,var(--blue-bright),var(--blue-electric)); border-radius:10px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .contact-icon i { color:white; font-size:1.1rem; }
+    .contact-item-text h4 { font-family:'Rajdhani',sans-serif; font-weight:700; font-size:0.85rem; color:var(--cyan); text-transform:uppercase; letter-spacing:1px; }
+    .contact-item-text p { font-size:0.95rem; color:var(--white); }
+    .contact-form { background:rgba(13,27,94,0.6); border:1px solid rgba(41,121,255,0.25); border-radius:20px; padding:2.5rem; }
+    .contact-form h3 { font-family:'Orbitron',sans-serif; font-size:1.1rem; color:var(--gold); margin-bottom:1.5rem; }
+    .form-group { margin-bottom:1.2rem; }
+    .form-group label { display:block; font-family:'Rajdhani',sans-serif; font-size:0.85rem; font-weight:600; color:var(--cyan); letter-spacing:1px; margin-bottom:0.5rem; }
+    .form-group input, .form-group select, .form-group textarea { width:100%; padding:12px 16px; background:rgba(10,14,46,0.8); border:1px solid rgba(41,121,255,0.3); border-radius:10px; color:var(--white); font-family:'Exo 2',sans-serif; font-size:0.95rem; transition:all 0.3s; outline:none; }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color:var(--blue-electric); box-shadow:0 0 0 3px rgba(41,121,255,0.15); }
+    .form-group select option { background:#0a0e2e; }
+    .form-group textarea { resize:vertical; min-height:100px; }
+
+    /* ─── STATS ─── */
+    .stats-strip { position:relative; z-index:1; background:linear-gradient(90deg,var(--blue-mid),rgba(41,121,255,0.2),var(--blue-mid)); border-top:1px solid rgba(41,121,255,0.3); border-bottom:1px solid rgba(41,121,255,0.3); padding:3rem 4rem; }
+    .stats-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:2rem; text-align:center; }
+    .stat-number { font-family:'Orbitron',sans-serif; font-size:2.5rem; font-weight:900; color:var(--gold); line-height:1; margin-bottom:0.3rem; }
+    .stat-label { font-family:'Rajdhani',sans-serif; font-size:0.9rem; font-weight:600; color:var(--white-80); letter-spacing:1px; text-transform:uppercase; }
+
+    /* ─── TICKER ─── */
+    .ticker-wrap { position:relative; z-index:1; background:var(--gold); padding:0.6rem 0; overflow:hidden; }
+    .ticker-content { display:flex; animation:ticker 25s linear infinite; white-space:nowrap; }
+    .ticker-content span { font-family:'Rajdhani',sans-serif; font-weight:700; font-size:0.9rem; color:#000; padding:0 3rem; }
+    @keyframes ticker { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+    /* ─── FOOTER ─── */
+    footer { position:relative; z-index:1; background:rgba(5,7,23,0.95); border-top:1px solid rgba(41,121,255,0.2); padding:3rem 4rem 2rem; }
+    .footer-grid { display:grid; grid-template-columns:1.5fr 1fr 1fr; gap:3rem; margin-bottom:2rem; }
+    .footer-brand .footer-logo { display:flex; align-items:center; gap:12px; margin-bottom:1rem; }
+    .footer-logo-icon { width:48px; height:48px; background:var(--blue-bright); border-radius:50%; display:flex; align-items:center; justify-content:center; font-family:'Orbitron',sans-serif; font-weight:900; font-size:14px; box-shadow:0 0 20px rgba(41,121,255,0.5); overflow:hidden; }
+    .footer-logo-icon img { width:100%; height:100%; object-fit:cover; border-radius:50%; }
+    .footer-brand h3 { font-family:'Orbitron',sans-serif; font-size:1rem; color:var(--gold); }
+    .footer-brand p { font-size:0.9rem; color:var(--white-80); line-height:1.6; }
+    .footer-col h4 { font-family:'Orbitron',sans-serif; font-size:0.8rem; color:var(--gold); letter-spacing:2px; margin-bottom:1rem; }
+    .footer-col ul { list-style:none; }
+    .footer-col ul li { margin-bottom:0.6rem; font-size:0.9rem; color:var(--white-80); display:flex; align-items:center; gap:8px; }
+    .footer-col ul li i { color:var(--cyan); font-size:0.7rem; }
+    .footer-bottom { border-top:1px solid rgba(255,255,255,0.08); padding-top:1.5rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; }
+    .footer-bottom p { font-size:0.85rem; color:rgba(255,255,255,0.5); }
+    .social-links { display:flex; gap:0.8rem; }
+    .social-link { width:38px; height:38px; background:rgba(41,121,255,0.15); border:1px solid rgba(41,121,255,0.3); border-radius:50%; display:flex; align-items:center; justify-content:center; color:var(--white-80); text-decoration:none; transition:all 0.3s; font-size:0.9rem; }
+    .social-link:hover { background:var(--blue-electric); border-color:var(--blue-electric); color:white; transform:translateY(-3px); }
+
+    /* ─── ANIMATIONS ─── */
+    @keyframes fadeInDown { from{opacity:0;transform:translateY(-20px)} to{opacity:1;transform:translateY(0)} }
+    .reveal { opacity:0; transform:translateY(40px); transition:opacity 0.7s ease,transform 0.7s ease; }
+    .reveal.visible { opacity:1; transform:translateY(0); }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      .hero { grid-template-columns:1fr; padding:3rem 2rem; }
+      .hero-right { display:none; }
+      section, .stats-strip, footer { padding-left:1.5rem; padding-right:1.5rem; }
+      .path-container { grid-template-columns:1fr; }
+      .contact-grid { grid-template-columns:1fr; }
+      .stats-grid { grid-template-columns:repeat(2,1fr); }
+      .footer-grid { grid-template-columns:1fr; gap:2rem; }
+      .nav-links { display:none; }
+      .hero-event { flex-wrap:wrap; gap:1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="particles-bg"></div>
+  <div class="hex-grid"></div>
+
+  <!-- TICKER -->
+  <div class="ticker-wrap">
+    <div class="ticker-content">
+      <span>🎓 Career Orientation Seminar 2026</span>
+      <span>📅 Sunday, 5th April 2026 | 6:00 PM</span>
+      <span>📍 2nd Floor Sahyadri Chambers, Kalyan (E)</span>
+      <span>🏆 MHT-CET PCM Topper: Nikita Gupta – 98.64%</span>
+      <span>🔬 MHT-CET PCB Topper: Priyanshi U. – 96.57%</span>
+      <span>📞 86928 40128 | 96536 60248</span>
+      <span>🌐 www.nationalacademyeducation.com</span>
+      <span>🎓 Career Orientation Seminar 2026</span>
+      <span>📅 Sunday, 5th April 2026 | 6:00 PM</span>
+      <span>📍 2nd Floor Sahyadri Chambers, Kalyan (E)</span>
+      <span>🏆 MHT-CET PCM Topper: Nikita Gupta – 98.64%</span>
+      <span>🔬 MHT-CET PCB Topper: Priyanshi U. – 96.57%</span>
+      <span>📞 86928 40128 | 96536 60248</span>
+      <span>🌐 www.nationalacademyeducation.com</span>
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-brand">
+      <!-- FIXED: Clean logo container — shows image if found, fallback text if not -->
+      <div class="nav-logo-wrap" id="navLogoWrap">
+        <img 
+          src="logo.png" 
+          alt="National Academy Logo"
+          id="navLogoImg"
+          onerror="this.style.display='none'; document.getElementById('navLogoFallback').style.display='block';"
+        >
+        <span class="nav-logo-fallback" id="navLogoFallback">NA</span>
+      </div>
+      <div>
+        <div class="nav-title">National Academy</div>
+        <div class="nav-sub">Entrance is the key to success</div>
+      </div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#agenda">Agenda</a></li>
+      <li><a href="#exams">Exams</a></li>
+      <li><a href="#careers">Careers</a></li>
+      <li><a href="#results">Results</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-left">
+      <div class="hero-badge"><i class="fas fa-star"></i> CAREER ORIENTATION SEMINAR 2026</div>
+      <div class="hero-welcome">National Academy Presents</div>
+      <h1 class="hero-title">WELCOME TO<br><span>YOUR FUTURE</span></h1>
+      <p class="hero-subtitle">Career Orientation Seminar</p>
+
+      <div class="hero-event">
+        <div class="hero-event-item">
+          <i class="fas fa-calendar-alt"></i>
+          <span>Sunday, 5<sup>th</sup> April 2026</span>
+        </div>
+        <div class="hero-event-item">
+          <i class="fas fa-clock"></i>
+          <span>6:00 PM Onwards</span>
+        </div>
+      </div>
+
+      <!-- FIXED: Speaker photo — tries image first, shows initials on error -->
+      <div class="hero-speaker">
+        <div class="speaker-photo-wrap">
+          <img 
+            src="WhatsApp Image 2026-04-03 at 9.28.25 PM.jpeg" 
+            alt="Mr. Suraj Vaishya"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+          >
+          <span class="speaker-initials">SV</span>
+        </div>
+        <div class="speaker-info">
+          <h4>Mr. Suraj Vaishya</h4>
+          <p>Founder & Owner — National Academy</p>
+          <span class="speaker-tag">Your Career Guide</span>
+        </div>
+      </div>
+
+      <div class="hero-cta">
+        <a href="#agenda" class="btn-primary-3d"><i class="fas fa-rocket"></i> Explore Agenda</a>
+        <a href="#contact" class="btn-gold-3d"><i class="fas fa-phone-alt"></i> Register Now</a>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="scene-3d">
+        <div class="ring1 atom-ring"></div>
+        <div class="ring2 atom-ring"></div>
+        <div class="ring3 atom-ring"></div>
+        <div class="atom-core">NA<br>2026</div>
+      </div>
+      <div class="floating-card fc1"><i class="fas fa-trophy fc-icon"></i> 98.64% Topper</div>
+      <div class="floating-card fc2"><i class="fas fa-users fc-icon"></i> 500+ Students</div>
+      <div class="floating-card fc3"><i class="fas fa-graduation-cap fc-icon"></i> JEE | NEET | CET</div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <div class="stats-strip">
+    <div class="stats-grid">
+      <div class="stat-item reveal">
+        <div class="stat-number" data-target="98.64">98.64<span style="font-size:1rem">%</span></div>
+        <div class="stat-label">Top PCM Score</div>
+      </div>
+      <div class="stat-item reveal">
+        <div class="stat-number" data-target="96.57">96.57<span style="font-size:1rem">%</span></div>
+        <div class="stat-label">Top PCB Score</div>
+      </div>
+      <div class="stat-item reveal">
+        <div class="stat-number">500<span style="font-size:1.5rem">+</span></div>
+        <div class="stat-label">Students Trained</div>
+      </div>
+      <div class="stat-item reveal">
+        <div class="stat-number">3</div>
+        <div class="stat-label">Flagship Exams</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AGENDA -->
+  <section id="agenda">
+    <div class="section-label">Event Schedule</div>
+    <h2 class="section-title" style="text-align:center">Seminar <span>Agenda</span></h2>
+    <div class="section-divider"></div>
+    <div class="agenda-grid">
+      <div class="agenda-card reveal">
+        <div class="agenda-num">01</div>
+        <div class="agenda-icon"><i class="fas fa-hands-clapping"></i></div>
+        <h3>Welcome & Introduction</h3>
+        <p>Opening address by Mr. Suraj Vaishya — setting the vision for student success and career readiness.</p>
+      </div>
+      <div class="agenda-card reveal">
+        <div class="agenda-num">02</div>
+        <div class="agenda-icon"><i class="fas fa-compass"></i></div>
+        <h3>Importance of Career Planning</h3>
+        <p>Why planning your career early makes all the difference — insights and strategies from real success stories.</p>
+      </div>
+      <div class="agenda-card reveal">
+        <div class="agenda-num">03</div>
+        <div class="agenda-icon"><i class="fas fa-flask"></i></div>
+        <h3>Career Opportunities in Science</h3>
+        <p>Explore Engineering, Medicine, Research and beyond — a comprehensive guide to science career paths.</p>
+      </div>
+      <div class="agenda-card reveal">
+        <div class="agenda-num">04</div>
+        <div class="agenda-icon"><i class="fas fa-book-open"></i></div>
+        <h3>How to Prepare for Exams</h3>
+        <p>Proven strategies to crack JEE, NEET, and MHT-CET — study plans, time management, and more.</p>
+      </div>
+     <!-- <div class="agenda-card reveal">
+        <div class="agenda-num">05</div>
+        <div class="agenda-icon"><i class="fas fa-comments"></i></div>
+        <h3>Q & A Session</h3>
+        <p>Your questions answered live — direct interaction with experts to clear all doubts and concerns.</p>
+      </div>-->
+    </div>
+  </section>
+
+  <!-- EXAMS -->
+  <section id="exams">
+    <div class="section-label">Entrance Examinations</div>
+    <h2 class="section-title" style="text-align:center">Popular <span>Entrance Exams</span></h2>
+    <div class="section-divider"></div>
+    <div class="exam-cards">
+      <div class="exam-card reveal">
+        <div class="exam-hex"><i class="fas fa-school"></i></div>
+        <h3>HSC BOARD</h3>
+        <h4>Class 11–12 Science</h4>
+        <p>Covers the complete 11th & 12th science curriculum — the foundation of all competitive exam preparation.</p>
+      </div>
+      <div class="exam-card reveal">
+        <div class="exam-hex"><i class="fas fa-cog"></i></div>
+        <h3>MHT-CET</h3>
+        <h4>Maharashtra Common Entrance Test</h4>
+        <p>State-level entrance test for Engineering and Pharmacy admissions across Maharashtra's top colleges.</p>
+      </div>
+      <div class="exam-card reveal">
+        <div class="exam-hex"><i class="fas fa-atom"></i></div>
+        <h3>JEE</h3>
+        <h4>Joint Entrance Examination</h4>
+        <p>National level examination for admissions to prestigious IITs, NITs, and IIITs across the country.</p>
+      </div>
+      <div class="exam-card reveal">
+        <div class="exam-hex"><i class="fas fa-heartbeat"></i></div>
+        <h3>NEET</h3>
+        <h4>National Eligibility cum Entrance Test</h4>
+        <p>Gateway to MBBS, BDS, Nursing, and Pharmacy programs at top medical colleges in India.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAREERS -->
+  <section id="careers">
+    <div class="section-label">Your Future</div>
+    <h2 class="section-title" style="text-align:center">Career Opportunities <span>in Science</span></h2>
+    <div class="section-divider"></div>
+    <div class="career-grid">
+      <div class="career-card reveal">
+        <div class="career-icon-wrap">🏗️</div>
+        <h3>Engineering</h3>
+        <p>IITs, NITs, and top engineering colleges await. High-paying jobs and groundbreaking innovation.</p>
+      </div>
+      <div class="career-card reveal">
+        <div class="career-icon-wrap">🏥</div>
+        <h3>Medicine</h3>
+        <p>MBBS, BDS, Nursing — serve the nation and humanity with a career in healthcare.</p>
+      </div>
+      <div class="career-card reveal">
+        <div class="career-icon-wrap">🔬</div>
+        <h3>Research</h3>
+        <p>Push the boundaries of science. Work in prestigious labs and research institutes across India.</p>
+      </div>
+      <div class="career-card reveal">
+        <div class="career-icon-wrap">💊</div>
+        <h3>Pharmacy</h3>
+        <p>Design life-saving drugs and manage healthcare systems with a pharmacy degree.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PATHS -->
+  <section id="paths">
+    <div class="section-label">Career Roadmap</div>
+    <h2 class="section-title" style="text-align:center">Career Paths After <span>JEE | NEET | MHT-CET</span></h2>
+    <div class="section-divider"></div>
+    <div class="path-container">
+      <div class="path-box jee reveal">
+        <div class="path-box-title"><i class="fas fa-graduation-cap"></i> After JEE (IIT)</div>
+        <p style="font-size:0.9rem;color:var(--white-80);margin-bottom:1.2rem">IIT opens doors to India's top engineering colleges and highest-paying jobs.</p>
+        <div class="path-items">
+          <div class="path-item"><i class="fas fa-chevron-right"></i> IIT Bombay</div>
+          <div class="path-item"><i class="fas fa-chevron-right"></i> IIT Delhi</div>
+          <div class="path-item"><i class="fas fa-chevron-right"></i> IIT Kharagpur</div>
+          <div class="path-item"><i class="fas fa-chevron-right"></i> NITs & IIITs</div>
+          <div class="path-item"><i class="fas fa-chevron-right"></i> Top Engineering</div>
+          <div class="path-item"><i class="fas fa-chevron-right"></i> High Paying Jobs</div>
+        </div>
+      </div>
+      <div class="path-box neet reveal">
+        <div class="path-box-title"><i class="fas fa-stethoscope"></i> After NEET</div>
+        <p style="font-size:0.9rem;color:var(--white-80);margin-bottom:1.2rem">NEET is your gateway to top medical institutions across the country.</p>
+        <div class="path-items">
+          <div class="path-item"><i class="fas fa-chevron-right"></i> AIIMS New Delhi</div>
+          <div class="path-item"><i class="fas fa-chevron-right"></i> AIIMS Nagpur</div>
+          <div class="path-item"><i class="fas fa-chevron-right"></i> AIIMS Jodhpur</div>
+          <div class="path-item"><i class="fas fa-chevron-right"></i> MBBS / BDS</div>
+          <div class="path-item"><i class="fas fa-chevron-right"></i> Nursing</div>
+          <div class="path-item"><i class="fas fa-chevron-right"></i> Pharmacy</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COLLEGES -->
+  <section id="colleges">
+    <div class="section-label">Maharashtra Excellence</div>
+    <h2 class="section-title" style="text-align:center">Top Colleges Through <span>MHT-CET</span></h2>
+    <div class="section-divider"></div>
+    <p style="text-align:center;color:var(--white-80);margin-bottom:2rem;font-family:'Rajdhani',sans-serif;font-size:1rem">Best Engineering & Pharmacy Colleges in Maharashtra</p>
+    <div class="colleges-grid">
+      <div class="college-card reveal"><i class="fas fa-university"></i>VJTI Mumbai</div>
+      <div class="college-card reveal"><i class="fas fa-university"></i>College of Engineering Pune</div>
+      <div class="college-card reveal"><i class="fas fa-university"></i>ICT Mumbai</div>
+      <div class="college-card reveal"><i class="fas fa-university"></i>Thakur College Mumbai</div>
+      <div class="college-card reveal"><i class="fas fa-university"></i>Vivekanand Education Society</div>
+      <div class="college-card reveal"><i class="fas fa-university"></i>Sardar Patel College Mumbai</div>
+      <div class="college-card reveal"><i class="fas fa-university"></i>Government College of Pharmacy</div>
+      <div class="college-card reveal"><i class="fas fa-plus-circle"></i>And Many More...</div>
+    </div>
+  </section>
+
+  <!-- WHY NATIONAL ACADEMY -->
+  <section id="why">
+    <div class="section-label">Our Advantage</div>
+    <h2 class="section-title" style="text-align:center">Why <span>National Academy?</span></h2>
+    <div class="section-divider"></div>
+    <div class="why-grid">
+      <div class="why-card reveal">
+        <div class="why-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+        <h3>Expert Faculty</h3>
+        <p>Experienced educators with proven track records in JEE, NEET, and MHT-CET coaching.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon"><i class="fas fa-book-open"></i></div>
+        <h3>Integrated Curriculum</h3>
+        <p>HSC Board + competitive exam syllabus covered simultaneously for maximum efficiency.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon"><i class="fas fa-clipboard-check"></i></div>
+        <h3>Regular Tests & Feedback</h3>
+        <p>Weekly practice tests with detailed feedback to track progress and identify weak areas.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon"><i class="fas fa-trophy"></i></div>
+        <h3>Top Results</h3>
+        <p>Consistent top performers every year — setting new benchmarks in Kalyan with unbeatable results.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon"><i class="fas fa-heart"></i></div>
+        <h3>Stay Healthy & Positive</h3>
+        <p>We believe in holistic development — academic excellence with mental health and positivity.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESULTS -->
+  <section id="results">
+    <div class="results-header">
+      <div class="section-label">2025</div>
+      <h2 class="section-title">Our <span>Star Achievers</span></h2>
+      <div class="section-divider"></div>
+      <p style="color:var(--white-80);font-family:'Rajdhani',sans-serif;font-size:1rem">
+        "Setting new benchmarks in Kalyan with unbeatable science results! ⭐"
+      </p>
+    </div>
+
+    <div class="results-tabs">
+      <button class="tab-btn active" onclick="showTab('pcm', this)">PCM Results</button>
+      <button class="tab-btn" onclick="showTab('pcb', this)">PCB Results</button>
+    </div>
+
+    <!-- PCM -->
+    <div id="tab-pcm" class="results-grid">
+
+      <!-- FIXED: Topper #1 — real photo with initials fallback -->
+      <div class="topper-card reveal">
+        <div class="topper-rank">🥇 #1</div>
+        <div class="topper-avatar">
+          <img 
+            src="nikita.jpeg" 
+            alt="Nikita Gupta"
+            onerror="this.style.display='none';"
+          >
+          <span class="avatar-initials"></span>
+        </div>
+        <div class="topper-name">Nikita Gupta</div>
+        <div class="topper-score">98<span>.64%</span></div>
+        <div class="topper-exam">MHT-CET PCM</div>
+        <div class="topper-score">93<span>.03%</span></div>
+        <div class="topper-exam">JEE Mains</div>
+        <div class="topper-score">86<span>.33%</span></div>
+        <div class="topper-exam">HSC Boards</div>
+      </div>
+
+      <div class="topper-card reveal">
+        <div class="topper-rank">#2</div>
+        <div class="topper-avatar">
+          <img 
+            src="sanjana.jpeg" 
+            alt="Sanjana V."
+            onerror="this.style.display='none';"
+          >
+          <span class="avatar-initials"></span>
+        </div>
+        <div class="topper-name">Sanjana V.</div>
+        <div class="topper-score">97<span>.28%</span></div>
+        <div class="topper-exam">MHT-CET PCM</div>
+        <div class="topper-score">90<span>.00%</span></div>
+        <div class="topper-exam">JEE Mains</div>
+        <div class="topper-score">82<span>.57%</span></div>
+        <div class="topper-exam">HSC Boards</div>
+      </div>
+      <div class="topper-card reveal">
+        <div class="topper-rank">#3</div>
+         <div class="topper-avatar">
+          <img 
+            src="teja.jpeg" 
+            alt="Tejaswini M."
+            onerror="this.style.display='none';"
+          >
+          <span class="avatar-initials"></span>
+        </div>
+        <div class="topper-name">Tejaswini M.</div>
+        <div class="topper-score">93<span>.81%</span></div>
+        <div class="topper-exam">MHT-CET PCM</div>
+           <div class="topper-score">5000<span> Rank</span></div>
+        <div class="topper-exam">JEE Adv.</div>
+      </div>
+      <div class="topper-card reveal">
+        <div class="topper-rank">#4</div>
+        <div class="topper-avatar">
+          <img 
+            src="ayush.jpeg" 
+            alt="Ayush Shukla"
+            onerror="this.style.display='none';"
+          >
+          <span class="avatar-initials"></span>
+        </div>
+        <div class="topper-name">Ayush Shukla</div>
+        <div class="topper-score">93<span>.68%</span></div>
+        <div class="topper-exam">MHT-CET PCM</div>
+         <div class="topper-score">83<span>.01%</span></div>
+        <div class="topper-exam">JEE Mains</div>
+      </div>
+      <div class="topper-card reveal">
+        <div class="topper-rank">#5</div>
+        <div class="topper-avatar">
+          <img 
+            src="an2.jpeg" 
+            alt="Ankita Padhy"
+            onerror="this.style.display='none';"
+          >
+          <span class="avatar-initials"></span>
+        </div>
+        <div class="topper-name">Ankita Padhy</div>
+        <div class="topper-score">92<span>.81%</span></div>
+        <div class="topper-exam">MHT-CET PCM</div>
+      </div>
+      <div class="topper-card reveal">
+        <div class="topper-rank">#6</div>
+        <div class="topper-avatar"><span class="avatar-initials">TS</span></div>
+        <div class="topper-name">Tejas Sakhare</div>
+        <div class="topper-score">88<span>.24%</span></div>
+        <div class="topper-exam">MHT-CET PCM</div>
+      </div>
+      <div class="topper-card reveal">
+        <div class="topper-rank">#7</div>
+        <div class="topper-avatar">
+          <img 
+            src="sonam.jpeg" 
+            alt="Sonam Singh"
+            onerror="this.style.display='none';"
+          >
+          <span class="avatar-initials"></span>
+        </div>
+        <div class="topper-name">Sonam Singh</div>
+        <div class="topper-score">87<span>.94%</span></div>
+        <div class="topper-exam">MHT-CET PCM</div>
+      </div>
+      <div class="topper-card reveal">
+        <div class="topper-rank">#8</div>
+        <div class="topper-avatar">
+          <img 
+            src="dar.jpeg" 
+            alt="Darshan K."
+            onerror="this.style.display='none';"
+          >
+          <span class="avatar-initials"></span>
+        </div>
+        <div class="topper-name">Darshan K.</div>
+        <div class="topper-score">87<span>.41%</span></div>
+        <div class="topper-exam">MHT-CET PCM</div>
+      </div>
+      <div class="topper-card reveal">
+        <div class="topper-rank">#9</div>
+        <div class="topper-avatar"><span class="avatar-initials">ShS</span></div>
+        <div class="topper-name">Shreyash S.</div>
+        <div class="topper-score">86<span>.67%</span></div>
+        <div class="topper-exam">MHT-CET PCM</div>
+      </div>
+      <div class="topper-card reveal">
+        <div class="topper-rank">#10</div>
+        <div class="topper-avatar">
+          <img 
+            src="yash.jpeg" 
+            alt="Yash Tiwari"
+            onerror="this.style.display='none';"
+          >
+          <span class="avatar-initials"></span>
+        </div>
+        <div class="topper-name">Yash Tiwari</div>
+        <div class="topper-score">86<span>.54%</span></div>
+        <div class="topper-exam">MHT-CET PCM</div>
+      </div>
+      <div class="topper-card reveal">
+        <div class="topper-rank">#11</div>
+        <div class="topper-avatar">
+          <img 
+            src="sunny.jpeg" 
+            alt="Sunny Mehta"
+            onerror="this.style.display='none';"
+          >
+          <span class="avatar-initials"></span>
+        </div>
+        <div class="topper-name">Sunny Mehta</div>
+        <div class="topper-score">85<span>.52%</span></div>
+        <div class="topper-exam">MHT-CET PCM</div>
+      </div>
+      <div class="topper-card reveal">
+        <div class="topper-rank">#12</div>
+        <div class="topper-avatar"><span class="avatar-initials">AJ</span></div>
+        <div class="topper-name">Anushka J.</div>
+        <div class="topper-score">84<span>.49%</span></div>
+        <div class="topper-exam">MHT-CET PCM</div>
+      </div>
+      <div class="topper-card reveal">
+        <div class="topper-rank">#13</div>
+        <div class="topper-avatar">
+          <img 
+            src="bhavesh.jpeg" 
+            alt="Bhavesh S."
+            onerror="this.style.display='none';"
+          >
+          <span class="avatar-initials"></span>
+        </div>
+        <div class="topper-name">Bhavesh S.</div>
+        <div class="topper-score">82<span>.39%</span></div>
+        <div class="topper-exam">MHT-CET PCM</div>
+      </div>
+    </div>
+
+    <!-- PCB -->
+    <div id="tab-pcb" class="results-grid" style="display:none">
+      <div class="topper-card reveal">
+        <div class="topper-rank">🥇 #1</div>
+        <div class="topper-avatar">
+          <img 
+            src="priyanshi.jpeg" 
+            alt="Ayush Shukla"
+            onerror="this.style.display='none';"
+          >
+          <span class="avatar-initials"></span>
+        </div>
+        <div class="topper-name">Priyanshi U.</div>
+        <div class="topper-score">96<span>.57%</span></div>
+        <div class="topper-exam">MHT-CET PCB</div>
+        <div class="topper-score">83<span>.00%</span></div>
+        <div class="topper-exam">HSC Boards</div>
+      </div>
+      <div class="topper-card reveal">
+        <div class="topper-rank">#2</div>
+        <div class="topper-avatar"><span class="avatar-initials">BP</span></div>
+        <div class="topper-name">Bhumika Pawar</div>
+        <div class="topper-score">96<span>.11%</span></div>
+        <div class="topper-exam">MHT-CET PCB</div>
+      </div>
+      <div class="topper-card reveal">
+        <div class="topper-rank">#3</div>
+        <div class="topper-avatar"><span class="avatar-initials">KM</span></div>
+        <div class="topper-name">Kasturi M.</div>
+        <div class="topper-score">92<span>.22%</span></div>
+        <div class="topper-exam">MHT-CET PCB</div>
+      </div>
+      <div class="topper-card reveal">
+        <div class="topper-rank">#4</div>
+        <div class="topper-avatar">
+          <img 
+            src="diksha.jpeg" 
+            alt="Diksha U."
+            onerror="this.style.display='none';"
+          >
+          <span class="avatar-initials"></span>
+        </div>
+        <div class="topper-name">Diksha U.</div>
+        <div class="topper-score">90<span>.46%</span></div>
+        <div class="topper-exam">MHT-CET PCB</div>
+      </div>
+      <div class="topper-card reveal">
+        <div class="topper-rank">#5</div>
+        <div class="topper-avatar"><span class="avatar-initials">AnS</span></div>
+        <div class="topper-name">Anjali Singh</div>
+        <div class="topper-score">90<span>.13%</span></div>
+        <div class="topper-exam">MHT-CET PCB</div>
+        <div class="topper-score">86<span>.80%</span></div>
+        <div class="topper-exam">MH-Nursing</div>
+      </div>
+      <div class="topper-card reveal">
+        <div class="topper-rank">#6</div>
+        <div class="topper-avatar"><span class="avatar-initials">IS</span></div>
+        <div class="topper-name">Irem Shaikh</div>
+        <div class="topper-score">89<span>.90%</span></div>
+        <div class="topper-exam">MHT-CET PCB</div>
+      </div>
+      <div class="topper-card reveal">
+        <div class="topper-rank">#7</div>
+        <div class="topper-avatar"><span class="avatar-initials">SubM</span></div>
+        <div class="topper-name">Subhashree M.</div>
+        <div class="topper-score">87<span>.99%</span></div>
+        <div class="topper-exam">MHT-CET PCB</div>
+        <div class="topper-score">95<span>.34%</span></div>
+        <div class="topper-exam">MH-Nursing</div>
+      </div>
+      <div class="topper-card reveal">
+        <div class="topper-rank">#8</div>
+        <div class="topper-avatar"><span class="avatar-initials">SG</span></div>
+        <div class="topper-name">Sriya Gujiri</div>
+        <div class="topper-score">85<span>.29%</span></div>
+        <div class="topper-exam">MHT-CET PCB</div>
+        <div class="topper-score">93<span>.51%</span></div>
+        <div class="topper-exam">MH-Nursing</div>
+      </div>
+      <div class="topper-card reveal">
+        <div class="topper-rank">#9</div>
+        <div class="topper-avatar"><span class="avatar-initials">TS</span></div>
+        <div class="topper-name">Tejas Sakhare</div>
+        <div class="topper-score">82<span>.98%</span></div>
+        <div class="topper-exam">MHT-CET PCB</div>
+      </div>
+      <div class="topper-card reveal">
+        <div class="topper-rank">#10</div>
+          <div class="topper-avatar">
+          <img 
+            src="akash.jpeg" 
+            alt="Aakash V."
+            onerror="this.style.display='none';"
+          >
+          <span class="avatar-initials"></span>
+        </div>
+        <div class="topper-name">Aakash V.</div>
+        <div class="topper-score">82<span>.58%</span></div>
+        <div class="topper-exam">MHT-CET PCB</div>
+      </div>
+       <div class="topper-card reveal">
+        <div class="topper-rank">#11</div>
+          <div class="topper-avatar">
+          <img 
+            src="sam.jpeg" 
+            alt="Aakash V."
+            onerror="this.style.display='none';"
+          >
+          <span class="avatar-initials"></span>
+        </div>
+        <div class="topper-name">Samruddhi R.</div>
+        <div class="topper-score">82<span>.22%</span></div>
+        <div class="topper-exam">MHT-CET PCB</div>
+      </div>
+      </div>
+     
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section id="gallery">
+    <div class="section-label">Class Life</div>
+    <h2 class="section-title">Our Classroom <span>Gallery</span></h2>
+    <div class="section-divider left"></div>
+    <div class="gallery-filter">
+      <button class="filter-btn active">All</button>
+      <button class="filter-btn">Prize Distribution</button>
+      <button class="filter-btn">Weekly Tests</button>
+      <button class="filter-btn">Classes</button>
+    </div>
+    <div class="gallery-grid">
+      <!-- Add real images like: <img src="images/gallery1.jpg" alt="..."> inside each .gallery-item -->
+      <!-- For now, styled placeholders are used -->
+      <div class="gallery-item gallery-placeholder reveal">
+        <i class="fas fa-award"></i><span>Prize Distribution</span>
+        <img src="WhatsApp Image 2026-04-03 at 7.20.03 PM (1).jpeg" alt="">
+        <div class="gallery-overlay">🏆 Monthly Achiever Award</div>
+      </div>
+      <div class="gallery-item gallery-placeholder reveal">
+        <i class="fas fa-award"></i><span>Prize Distribution</span>
+        <img src="WhatsApp Image 2026-04-03 at 7.20.03 PM (2).jpeg" alt="">
+        <div class="gallery-overlay">🏆 Monthly Achiever Award</div>
+      </div>
+      <div class="gallery-item gallery-placeholder reveal">
+        <i class="fas fa-award"></i><span>Prize Distribution</span>
+        <img src="WhatsApp Image 2026-04-03 at 7.20.03 PM (3).jpeg" alt="">
+        <div class="gallery-overlay">🏆 Monthly Achiever Award</div>
+      </div>
+      <div class="gallery-item gallery-placeholder reveal">
+        <i class="fas fa-award"></i><span>Prize Distribution</span>
+        <img src="WhatsApp Image 2026-04-03 at 7.20.04 PM (1).jpeg" alt="">
+        <div class="gallery-overlay">🏆 Monthly Achiever Award</div>
+      </div>
+      <div class="gallery-item gallery-placeholder reveal">
+       <i class="fas fa-award"></i><span>Prize Distribution</span>
+        <img src="WhatsApp Image 2026-04-03 at 7.20.07 PM (1).jpeg" alt="">
+        <div class="gallery-overlay">🏆 Monthly Achiever Award</div>
+      </div>
+      <div class="gallery-item gallery-placeholder reveal">
+        <span>Regular Practice Tests</span>
+        <img src="WhatsApp Image 2026-04-03 at 7.20.08 PM (1).jpeg" alt=""> 
+      </div>
+     <div class="gallery-item gallery-placeholder reveal">
+        <span>Regular Practice Tests</span>
+        <img src="WhatsApp Image 2026-04-03 at 7.20.10 PM (2).jpeg" alt=""> 
+      </div>
+      <div class="gallery-item gallery-placeholder reveal">
+        <span>Regular Practice Tests</span>
+        <img src="WhatsApp Image 2026-04-03 at 7.20.12 PM (1).jpeg" alt=""> 
+      </div>
+      <div class="gallery-item gallery-placeholder reveal">
+        <span>Regular Practice Tests</span>
+        <img src="WhatsApp Image 2026-04-03 at 7.20.13 PM.jpeg" alt=""> 
+      </div>
+      <div class="gallery-item gallery-placeholder reveal">
+        <span>Regular Practice Tests</span>
+        <img src="WhatsApp Image 2026-04-03 at 7.20.10 PM (1).jpeg" alt=""> 
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-label">Get In Touch</div>
+    <h2 class="section-title" style="text-align:center">Contact <span>Us</span></h2>
+    <div class="section-divider"></div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>📍 Find Us</h3>
+        <div class="contact-item">
+          <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+          <div class="contact-item-text">
+            <h4>Address</h4>
+            <p>2nd Floor Sahyadri Chambers, Kalyan (E), Maharashtra</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
+          <div class="contact-item-text">
+            <h4>Call Us</h4>
+            <p>86928 40128 | 96536 60248</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon"><i class="fas fa-globe"></i></div>
+          <div class="contact-item-text">
+            <h4>Website</h4>
+            <p>www.nationalacademyeducation.com</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon"><i class="fab fa-instagram"></i></div>
+          <div class="contact-item-text">
+            <h4>Instagram</h4>
+            <a href="https://www.instagram.com/national_academy1211/"><p>@national_academy1211</p></a>
+            
+          </div>
+        </div>
+        <div style="margin-top:2rem;padding:1.5rem;background:rgba(245,197,24,0.08);border:1px solid rgba(245,197,24,0.25);border-radius:14px">
+          <p style="font-family:'Orbitron',sans-serif;font-size:0.8rem;color:var(--gold);margin-bottom:0.5rem">SEMINAR DETAILS</p>
+          <p style="font-family:'Rajdhani',sans-serif;font-size:1rem;color:var(--white)">
+            📅 Sunday, 5<sup>th</sup> April 2026<br>
+            🕕 6:00 PM Onwards<br>
+            👨‍💼 By: Mr. Suraj Vaishya<br>
+            🎯 Career Orientation Seminar
+          </p>
+        </div>
+      </div>
+
+      <div class="contact-form">
+        <h3>🚀 Register for the Seminar</h3>
+        <div class="form-group">
+          <label>FULL NAME</label>
+          <input type="text" placeholder="Enter your full name" />
+        </div>
+        <div class="form-group">
+          <label>PHONE NUMBER</label>
+          <input type="tel" placeholder="Your phone number" />
+        </div>
+        <div class="form-group">
+          <label>EMAIL ADDRESS</label>
+          <input type="email" placeholder="Your email address" />
+        </div>
+        <div class="form-group">
+          <label>CLASS / STANDARD</label>
+          <select>
+            <option value="">Select your class</option>
+            <option>Class 11th</option>
+            <option>Class 12th</option>
+            <option>Dropper / Repeater</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>INTERESTED IN</label>
+          <select>
+            <option value="">Select exam</option>
+            <option>JEE</option>
+            <option>NEET</option>
+            <option>MHT-CET</option>
+            <option>HSC Board</option>
+            <option>All Exams</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>MESSAGE</label>
+          <textarea placeholder="Any questions or queries..."></textarea>
+        </div>
+        <button class="btn-gold-3d" style="width:100%;text-align:center;font-size:1rem;justify-content:center" onclick="handleSubmit()">
+          <i class="fas fa-paper-plane"></i> Register Now
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <div class="footer-logo-icon">
+            <!-- FIXED: Footer logo also handles image/fallback -->
+            <img 
+              src="logo.png" 
+              alt="NA Logo"
+              onerror="this.style.display='none'; this.parentElement.textContent='NA';"
+            >
+          </div>
+          <div>
+            <h3>National Academy</h3>
+
+            <p style="font-size:0.75rem;color:var(--cyan)">Entrance is the key to success</p>
+          </div>
+        </div>
+        <p>Setting new benchmarks in Kalyan with unbeatable science results. Join us for the Career Orientation Seminar on 5th April 2026 and take the first step toward your bright future.</p>
+      </div>
+      <div class="footer-col">
+        <h4>QUICK LINKS</h4>
+        <ul>
+          <li><i class="fas fa-chevron-right"></i> <a href="#home" style="color:inherit;text-decoration:none">Home</a></li>
+          <li><i class="fas fa-chevron-right"></i> <a href="#agenda" style="color:inherit;text-decoration:none">Agenda</a></li>
+          <li><i class="fas fa-chevron-right"></i> <a href="#exams" style="color:inherit;text-decoration:none">Exam Info</a></li>
+          <li><i class="fas fa-chevron-right"></i> <a href="#results" style="color:inherit;text-decoration:none">Our Results</a></li>
+          <li><i class="fas fa-chevron-right"></i> <a href="#gallery" style="color:inherit;text-decoration:none">Gallery</a></li>
+          <li><i class="fas fa-chevron-right"></i> <a href="#contact" style="color:inherit;text-decoration:none">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>CONTACT</h4>
+        <ul>
+          <li><i class="fas fa-map-marker-alt"></i> 2nd Floor Sahyadri Chambers, Kalyan (E)</li>
+          <li><i class="fas fa-phone"></i> 86928 40128</li>
+          <li><i class="fas fa-phone"></i> 96536 60248</li>
+          <li><i class="fas fa-globe"></i> nationalacademyeducation.com</li>
+          <a href="https://www.instagram.com/national_academy1211/"><li><i class="fab fa-instagram"></i> @national_academy1211</li></a>
+          
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>Created By Ayush Shukla | © 2026 National Academy — All Rights Reserved | Kalyan (E), Maharashtra</p>
+      <!--<div class="social-links">
+        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+      </div>-->
+    </div>
+  </footer>
+
+  <script>
+    // ── Particles ──
+    const bg = document.getElementById('particles-bg');
+    for (let i = 0; i < 60; i++) {
+      const p = document.createElement('div');
+      p.className = 'particle';
+      const size = Math.random() * 6 + 2;
+      const colors = ['#2979ff','#f5c518','#00e5ff','#1a3fdb'];
+      p.style.cssText = `
+        width:${size}px;height:${size}px;
+        left:${Math.random()*100}%;
+        background:${colors[Math.floor(Math.random()*colors.length)]};
+        animation-duration:${8+Math.random()*15}s;
+        animation-delay:${Math.random()*10}s;
+      `;
+      bg.appendChild(p);
+    }
+
+    // ── Scroll reveal ──
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // ── Tabs ──
+    function showTab(tab, btn) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('tab-pcm').style.display = tab === 'pcm' ? 'grid' : 'none';
+      document.getElementById('tab-pcb').style.display = tab === 'pcb' ? 'grid' : 'none';
+    }
+
+    // ── Form submit ──
+    function handleSubmit() {
+      alert('✅ Thank you for registering!\nWe will contact you soon.\n\n📞 86928 40128 | 96536 60248');
+    }
+
+    // ── Smooth scroll ──
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) target.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+
+    // ── Speaker initials fix: ensure initials show if no image ──
+    document.querySelectorAll('.speaker-photo-wrap img').forEach(img => {
+      if (!img.complete || img.naturalWidth === 0) {
+        img.style.display = 'none';
+        const init = img.nextElementSibling;
+        if (init) init.style.display = 'flex';
+      }
+    });
+  </script>
+</body>
+</html>
